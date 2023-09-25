@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
+import {CaretLeft } from 'phosphor-react-native';
 
 import background from "../../../assets/background1.png";
 import logo from "../../../assets/logo.png";
@@ -10,7 +11,14 @@ export default function ConfirmSMS({ navigation }) {
         <ImageBackground source={background} resizeMode="cover" style={styles.image}>
             <View style={styles.containerLogo}>
               <Image source={logo} />
-            </View>
+              <View style={styles.header}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <CaretLeft size={25} />
+                </TouchableOpacity>
+            </View>   
+            </View>   
+            
+          
             <View style={styles.containerForm}>
               <Text style={styles.title}>Confirme o código recebido</Text>
               <View style={styles.codeContainer}>
@@ -54,16 +62,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   containerLogo: {
-    flex: 3,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 4,
+    justifyContent: 'center',
+    textAlign: 'center',
+    marginLeft: 100,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginRight: 100,
+    marginTop: 20,
+  }, 
+
   containerForm: {
     flex: 3,
     margin: 50,
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
+
   title: {
     fontSize: 20,
     marginBottom: 20

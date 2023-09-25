@@ -11,6 +11,7 @@ import RegisterFinish from './src/screens/RegisterFinish';
 import RegisterStep3 from './src/screens/RegisterStep3';
 import RegisterStep2 from './src/screens/RegisterStep2';
 import RegisterStep1 from './src/screens/RegisterStep1';
+import TravelChat from './src/screens/TravelChat';
 
 export default function App() {
 
@@ -32,6 +33,7 @@ export default function App() {
         <Stack.Screen name="RegisterStep2" component={RegisterStep2} />
         <Stack.Screen name="RegisterStep3" component={RegisterStep3} />
         <Stack.Screen name="RegisterFinish" component={RegisterFinish} />
+        <Stack.Screen name="TravelChat" component={TravelChat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

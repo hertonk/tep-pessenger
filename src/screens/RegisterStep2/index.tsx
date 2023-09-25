@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
-
+import {CaretLeft } from 'phosphor-react-native';
 import background from "../../../assets/background1.png";
 import logo from "../../../assets/logo.png";
 
@@ -10,6 +10,11 @@ export default function RegisterStep2({ navigation }) {
         <ImageBackground source={background} resizeMode="cover" style={styles.image}>
             <View style={styles.containerLogo}>
               <Image source={logo} />
+              <View style={styles.header}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <CaretLeft size={25} />
+                </TouchableOpacity>
+            </View>   
             </View>
             <View style={styles.containerForm}>
               <Text style={styles.title}>Cadastre-se</Text>
@@ -52,15 +57,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   containerLogo: {
-    flex: 3,
+    flex: 4,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 20,
   },
+
+  header: {
+    marginTop: 10,
+  },
+
   containerForm: {
     flex: 4,
     margin: 50,
     alignItems: 'center',
     justifyContent: 'flex-start'
+    
   },
   title: {
     fontSize: 28,
@@ -74,7 +86,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 5,
     borderWidth: 1,
-    borderColor: '#CCC'
+    borderColor: '#CCC',
   },
   button: {
     width: '100%',

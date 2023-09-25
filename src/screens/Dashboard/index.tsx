@@ -9,6 +9,11 @@ export default function Dashboard({ navigation }) {
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
+        <View style={styles.header1}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <CaretLeft size={25} />
+                </TouchableOpacity>
+            </View>
             <View style={styles.header2}>
               <Text style={styles.title}>Início</Text>
             </View>
@@ -60,13 +65,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 40,
   },
+
   header1: {
     flex: 2,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent:  'flex-end',
   },
+
   header2: {
-    flex: 5,
+    flex: 32,
     alignItems: 'center',
     justifyContent: 'center',
   },

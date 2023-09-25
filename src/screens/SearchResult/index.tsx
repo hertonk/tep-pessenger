@@ -1,16 +1,27 @@
 import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native';
-import { Star, Phone, MapPin, MapTrifold, CaretLeft } from 'phosphor-react-native';
+import { Star, Phone, MapPin, MapTrifold, CaretLeft} from 'phosphor-react-native';
+import { useState, handleStartPress } from 'react';
 
-import profile from  '../../../assets/profile.png';
+const profile =  require('../../../assets/profile.png');
 
-export default function SearchResult({ navigation }) {
+export default function SearchResult({navigation}) {
+
+  const [rating, setRating] = useState(0);
+
+  const handleStarPress = (star) => {
+    setRating(star);
+  };
+
 
   return (
+     
       <SafeAreaView style={styles.container}>
+      
+      {/* apagar */}
         <View style={styles.header}>
             <View style={styles.header1}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <CaretLeft size={20} />
+                    <CaretLeft size={25} />
                 </TouchableOpacity>
             </View>
             <View style={styles.header2}>
@@ -27,13 +38,23 @@ export default function SearchResult({ navigation }) {
                             <View style={styles.headerItemText}>
                                 <Text style={styles.nick}>hertonk</Text>
                                 <Text style={styles.name}>Herton Vilarim</Text>
-                                <View style={styles.starsItem}>
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} />
+                                <View style={styles.starContainer}>
+                                    <Star size={20} weight="fill" color='#EFAC03' />  
+                                    <Text> 5,0 </Text>
                                 </View>
+                                <View>
+                              <Text style={styles.startText}>Avalie este Motorista:</Text>
+                              <View style={styles.starsItem}>
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <TouchableOpacity
+                                    key={star}
+                                    onPress={() => handleStarPress(star)}
+                                  >
+                                    <Star size={18} weight={star <= rating ? 'fill' : 'regular'} color='#EFAC03' />
+                                  </TouchableOpacity>
+                                ))}
+                              </View>
+                            </View>
                             </View>
                         </View>
                     </View>
@@ -70,7 +91,7 @@ export default function SearchResult({ navigation }) {
                         </View>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button}onPress={() => navigation.navigate('TravelChat')}>
                             <Text style={styles.buttonText}>Agendar Viagem</Text>
                         </TouchableOpacity>
                     </View>
@@ -82,13 +103,23 @@ export default function SearchResult({ navigation }) {
                             <View style={styles.headerItemText}>
                                 <Text style={styles.nick}>hertonk</Text>
                                 <Text style={styles.name}>Herton Vilarim</Text>
-                                <View style={styles.starsItem}>
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} />
+                                <View style={styles.starContainer}>
+                                    <Star size={20} weight="fill" color='#EFAC03' />  
+                                    <Text> 4,0 </Text>
                                 </View>
+                                <View>
+                              <Text style={styles.startText}>Avalie este Motorista:</Text>
+                              <View style={styles.starsItem}>
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <TouchableOpacity
+                                    key={star}
+                                    onPress={() => handleStarPress(star)}
+                                  >
+                                    <Star size={18} weight={star <= rating ? 'fill' : 'regular'} color='#EFAC03' />
+                                  </TouchableOpacity>
+                                ))}
+                              </View>
+                            </View>
                             </View>
                         </View>
                     </View>
@@ -125,7 +156,7 @@ export default function SearchResult({ navigation }) {
                         </View>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button}onPress={() => navigation.navigate('TravelChat')}>
                             <Text style={styles.buttonText}>Agendar Viagem</Text>
                         </TouchableOpacity>
                     </View>
@@ -137,13 +168,23 @@ export default function SearchResult({ navigation }) {
                             <View style={styles.headerItemText}>
                                 <Text style={styles.nick}>hertonk</Text>
                                 <Text style={styles.name}>Herton Vilarim</Text>
-                                <View style={styles.starsItem}>
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} weight="fill" />
-                                    <Star size={18} />
+                                <View style={styles.starContainer}>
+                                    <Star size={20} weight="fill" color='#EFAC03' />  
+                                    <Text> 3,0 </Text>
                                 </View>
+                                <View>
+                              <Text style={styles.startText}>Avalie este Motorista:</Text>
+                              <View style={styles.starsItem}>
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <TouchableOpacity
+                                    key={star}
+                                    onPress={() => handleStarPress(star)}
+                                  >
+                                    <Star size={18} weight={star <= rating ? 'fill' : 'regular'} color='#EFAC03' />
+                                  </TouchableOpacity>
+                                ))}
+                              </View>
+                            </View>
                             </View>
                         </View>
                     </View>
@@ -180,7 +221,7 @@ export default function SearchResult({ navigation }) {
                         </View>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button}onPress={() => navigation.navigate('TravelChat')}>
                             <Text style={styles.buttonText}>Agendar Viagem</Text>
                         </TouchableOpacity>
                     </View>
@@ -215,14 +256,15 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   header2: {
-    flex: 9,
+    flex: 16,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   title: {
     fontSize: 26,
     color: 'black',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    justifyContent: 'center',
   },
   principalContent: {
     alignItems: 'center',
@@ -269,10 +311,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+
+  starContainer: {
+    flexDirection: 'row',
+  },
+
+  startText: {
+    marginTop: 4,
+    fontSize: 12,
+    color: 'grey',
+  },
+
   starsItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10
+    marginTop: 8,
+    marginRight: 22,
   },
   subItem1: {
     flexDirection: 'row',

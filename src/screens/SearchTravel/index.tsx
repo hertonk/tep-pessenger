@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity, Image, TextInput } from 'react-native';
+import {CaretLeft} from 'phosphor-react-native';
 
 import navigatiorart from '../../../assets/navigatorart.png';
 
@@ -7,6 +8,11 @@ export default function SearchTravel({ navigation }) {
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
+        <View style={styles.header1}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <CaretLeft size={25} />
+                </TouchableOpacity>
+            </View>
             <View style={styles.header2}>
               <Text style={styles.title}>Pesquisar Viagem</Text>
             </View>
@@ -44,13 +50,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     padding: 40,
   },
+
   header1: {
     flex: 2,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-end'
   },
+
   header2: {
-    flex: 5,
+    flex: 16,
     alignItems: 'center',
     justifyContent: 'center',
   },
